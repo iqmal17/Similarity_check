@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimCheck — Pendeteksi Kemiripan Tugas Mahasiswa</title>
+<link rel="icon" href="/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#beranda" class="brand">
+      <img src="/icon.png" alt="SimCheck" class="brand-icon">
+      <span>Sim<span class="accent">Check</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#beranda">Beranda</a>
+      <a href="#carakerja">Cara Kerja</a>
+      <a href="#unggah">Unggah</a>
+      <a href="#hasil">Hasil</a>
+      <a href="#heatmap">Heatmap</a>
+      <a href="#tentang">Tentang</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#kontak" class="btn-kontak">Kontak</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="sun">☀</span>
+        <span class="moon" style="display:none">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+  </div>
+  <!-- mobile sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <strong>Sim<span class="accent">Check</span></strong>
+      <button id="closeSidebar">✕</button>
+    </div>
+    <a href="#beranda" class="slink">Beranda</a>
+    <a href="#carakerja" class="slink">Cara Kerja</a>
+    <a href="#unggah" class="slink">Unggah</a>
+    <a href="#hasil" class="slink">Hasil</a>
+    <a href="#heatmap" class="slink">Heatmap</a>
+    <a href="#tentang" class="slink">Tentang</a>
+    <a href="#kontak" class="slink">Kontak</a>
+  </div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+</header>
+
+<main>
+  <!-- HERO / BERANDA -->
+  <section id="beranda" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-visual">
+        <div class="score-bubble score-low">12%<span>Rendah</span></div>
+        <div class="score-bubble score-high">98%<span>Mirip Tinggi</span></div>
+        <div class="score-bubble score-med">42%<span>Sedang</span></div>
+        <div class="hero-logo-wrap">
+          <div class="glow-ring"></div>
+          <div class="glow-ring ring2"></div>
+          <img src="/icon.png" alt="SimCheck" class="hero-logo">
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="pill">Plagiarism & Similarity Checker</div>
+        <h1>Deteksi <span class="grad">Kemiripan Tugas</span><br>Mahasiswa Secara Cerdas.</h1>
+        <p class="lead">Unggah banyak file Word, PDF, atau TXT sekaligus. SimCheck menghitung persentase kemiripan, menunjukkan <b>bagian mana yang mirip</b>, menampilkan <b>Heatmap Matrix</b>, dan mengekspor hasil ke Excel, PDF, & Word.</p>
+        <div class="hero-cta">
+          <a href="#unggah" class="btn btn-primary">Mulai Cek Tugas →</a>
+          <button class="btn btn-ghost" id="btnSample">⚡ Coba Contoh</button>
+        </div>
+        <div class="mini-stats">
+          <div><strong><span class="counter-value" data-counter="3">0</span></strong><span>Mode Deteksi</span></div>
+          <div><strong>∞</strong><span>Multi-file</span></div>
+          <div><strong><span class="counter-value" data-counter="100">0</span>%</strong><span>Akurasi J-C-N</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA KERJA -->
+  <section id="carakerja" class="section section-alt">
+    <div class="container center">
+      <div class="section-eyebrow">CARA KERJA</div>
+      <h2 class="section-title">Hanya 3 Langkah Mudah</h2>
+      <p class="section-sub">Dari unggah hingga laporan siap unduh, semuanya cepat.</p>
+
+      <div class="steps">
+        <div class="step-card reveal-scroll">
+          <div class="step-num">1</div>
+          <div class="step-ico">⬇</div>
+          <h3>Unggah Tugas</h3>
+          <p>Tarik beberapa file (Word, PDF, TXT) ke area unggah. Bisa banyak file sekaligus.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card active reveal-scroll">
+          <div class="step-num">2</div>
+          <div class="step-ico">⚙</div>
+          <h3>Pilih Mode & Analisis</h3>
+          <p>Pilih mode Normal, Sedang, atau Ketat. SimCheck menghitung kemiripan otomatis.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card reveal-scroll">
+          <div class="step-num">3</div>
+          <div class="step-ico">⬆</div>
+          <h3>Lihat & Unduh</h3>
+          <p>Lihat skor %, heatmap, bagian mirip — lalu unduh laporan Excel / PDF / Word.</p>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feat reveal-scroll"><div class="feat-ico">%</div><div><b>Skor Persentase</b><span>Gabungan Jaccard, Cosine & N-gram untuk akurasi.</span></div></div>
+        <div class="feat reveal-scroll"><div class="feat-ico">🔍</div><div><b>Bagian yang Mirip</b><span>Sorot kalimat & kata yang sama antar dokumen.</span></div></div>
+        <div class="feat reveal-scroll"><div class="feat-ico">▦</div><div><b>Heatmap Matrix</b><span>Peta panas kemiripan seluruh dokumen sekaligus.</span></div></div>
+        <div class="feat reveal-scroll"><div class="feat-ico">⬇</div><div><b>Export Detail</b><span>Unduh laporan lengkap Excel, PDF, & Word.</span></div></div>
+        <div class="feat reveal-scroll"><div class="feat-ico">⚡</div><div><b>3 Mode Deteksi</b><span>Atur sensitivitas: Normal, Sedang, Ketat.</span></div></div>
+        <div class="feat reveal-scroll"><div class="feat-ico">∞</div><div><b>Multi-file</b><span>Bandingkan banyak tugas dalam satu kali jalan.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNGGAH -->
+  <section id="unggah" class="section">
+    <div class="container center">
+      <div class="section-eyebrow">01 — UNGGAH</div>
+      <h2 class="section-title">Unggah Tugas & Pilih Mode</h2>
+      <p class="section-sub">Tarik beberapa file ke area di bawah. Minimal 2 dokumen untuk dibandingkan.</p>
+
+      <div class="upload-grid">
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" multiple accept=".docx,.pdf,.txt,.md,.csv" hidden>
+          <div class="dz-icon">⬇</div>
+          <div class="dz-title">Tarik & lepas file di sini</div>
+          <div class="dz-sub">atau <button type="button" class="link-btn" id="pickBtn">pilih file</button> · docx, pdf, txt, csv, md</div>
+          <div id="fileList" class="file-list"></div>
+        </div>
+
+        <div class="mode-panel">
+          <h4>Mode Deteksi</h4>
+          <label class="mode-option">
+            <input type="radio" name="mode" value="normal" checked>
+            <div><b>Normal</b><span>Seimbang. Cocok untuk pengecekan harian.</span></div>
+            <span class="radio-dot"></span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="mode" value="sedang">
+            <div><b>Sedang</b><span>Lebih sensitif terhadap frasa yang sama.</span></div>
+            <span class="radio-dot"></span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="mode" value="ketat">
+            <div><b>Ketat</b><span>Paling teliti — mendeteksi kata per kata.</span></div>
+            <span class="radio-dot"></span>
+          </label>
+          <button class="btn btn-primary btn-full" id="btnAnalyze" disabled>Analisis Kemiripan</button>
+          <div class="upload-tip">Maks 20 file · 50MB total</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HASIL -->
+  <section id="hasil" class="section section-alt">
+    <div class="container">
+      <div class="section-head-flex">
+        <div>
+          <div class="section-eyebrow">02 — HASIL</div>
+          <h2 class="section-title" style="margin:6px 0">Hasil Analisis Kemiripan</h2>
+        </div>
+        <div class="export-btns" id="exportBtns" style="display:none">
+          <button class="btn btn-chip primary" data-exp="word">Word (.docx)</button>
+        </div>
+      </div>
+
+      <div id="resultEmpty" class="empty-state">
+        <p>Belum ada analisis. Unggah minimal 2 file di atas, lalu klik <b>Analisis Kemiripan</b>.</p>
+      </div>
+
+      <div id="resultWrap" style="display:none">
+        <div class="summary-cards" id="summaryCards"></div>
+        <div class="pair-list" id="pairList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="tentang" class="section section-alt">
+    <div class="container about-grid">
+      <div>
+        <div class="section-eyebrow">TENTANG SIMCHECK</div>
+        <h2 class="section-title">Kenapa SimCheck?</h2>
+        <p>SimCheck dibuat untuk dosen & panitia akademik yang ingin cek kemiripan tugas mahasiswa secara cepat, adil, dan transparan. Algoritma gabungan <b>Jaccard + Cosine TF-IDF + N-gram</b> memberi skor yang mudah dibaca.</p>
+        <ul class="check-list">
+          <li>✓ Skor % jelas: Rendah / Sedang / Mirip Tinggi</li>
+          <li>✓ Sorotan kalimat mirip side-by-side</li>
+          <li>✓ Heatmap Matrix seluruh kelas</li>
+          <li>✓ Export Detail: Excel, PDF, Word — siap arsip</li>
+          <li>✓ 3 mode sensitivitas</li>
+          <li>✓ 100% lokal — privasi tugas terjaga</li>
+        </ul>
+      </div>
+      <div class="about-card reveal-scroll">
+        <h4>Teknologi</h4>
+        <div class="tech-tags">
+          <span>Python</span><span>Flask</span><span>scikit-learn</span><span>python-docx</span><span>PyPDF2</span><span>pandas</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+        </div>
+        <hr>
+        <p style="font-size:.9rem; opacity:.8">Versi Bazar 1.3 • Build 29 Juni 2026<br>© SimCheck Academic Tools</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER / KONTAK -->
+<footer class="footer" id="kontak">
+  <div class="footer-topbar"></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="brand large">
+        <img src="/icon.png" alt="" class="brand-icon">
+        <span>Sim<span class="accent">Check</span></span>
+      </div>
+      <p>Pendeteksi kemiripan tugas mahasiswa dengan Heatmap Matrix, Export Detail, dan 3 mode deteksi.</p>
+    </div>
+    <div>
+      <h5>Fitur</h5>
+      <ul>
+        <li>Unggah Multi-file</li>
+        <li>Skor Persentase</li>
+        <li>Heatmap Matrix</li>
+        <li>Export Detail</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Format</h5>
+      <ul>
+        <li>Word (.docx)</li>
+        <li>PDF (.pdf)</li>
+        <li class="accent">Excel (.xlsx)</li>
+        <li>TXT / CSV / MD</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kontak WhatsApp</h5>
+      <div class="wa">
+        <div class="wa-ico">☎</div>
+        <div>0852-4628-7198</div>
+      </div>
+      <div class="wa">
+        <div class="wa-ico">☎</div>
+        <div>0821-9684-7193</div>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="X">𝕏</a>
+        <a href="#" aria-label="Instagram">◎</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- floating WA -->
+<a class="floating-wa" href="https://wa.me/6285246287198" target="_blank">☎ <span>Hubungi Kami</span></a>
+
+<!-- scroll top -->
+<button class="scroll-top" id="scrollTop">↑</button>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
